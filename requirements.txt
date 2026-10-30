@@ -1,0 +1,7 @@
+# Runtime dependencies, pinned to the versions the committed results were produced with
+# (Python 3.14.7). scikit-learn >= 1.8 is required: the code uses LogisticRegression(l1_ratio=...).
+numpy==2.5.4
+pandas==3.1.0
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2

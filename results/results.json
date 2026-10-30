@@ -1,0 +1,1165 @@
+{
+ "data_quality": {
+  "n_records": 48842,
+  "n_feature_columns": 14,
+  "class_counts": {
+   "<=50K": 37155,
+   ">50K": 11687
+  },
+  "pos_share": 0.23928176569346055,
+  "missing": {
+   "workclass": 2799,
+   "occupation": 2809,
+   "native-country": 857
+  },
+  "workclass_and_occupation_both_missing": 2799,
+  "exact_duplicate_rows": 52,
+  "feature_duplicate_rows_ignoring_label": 57,
+  "feature_groups_with_conflicting_labels": 5,
+  "whitespace_issues_in_text_columns": 0,
+  "race_counts": {
+   "White": 41762,
+   "Black": 4685,
+   "Asian-Pac-Islander": 1519,
+   "Amer-Indian-Eskimo": 470,
+   "Other": 406
+  },
+  "sex_counts": {
+   "Male": 32650,
+   "Female": 16192
+  }
+ },
+ "n_records": 48842,
+ "class_counts": {
+  "<=50K": 37155,
+  ">50K": 11687
+ },
+ "pos_share": 0.23928176569346055,
+ "n_train": 39073,
+ "n_test": 9769,
+ "test_rows_identical_to_train_rows": 18,
+ "eda_train": {
+  "positive_rate": 0.23927008420136667,
+  "positive_rate_workclass_missing": 0.09449171518137035,
+  "n_workclass_missing": 2233,
+  "share_capital_gain_zero": 0.9183579453842807,
+  "positive_rate_capital_gain_positive": 0.6175548589341693,
+  "capital_gain_top_coded_count": 181,
+  "positive_rate_married_civ_spouse": 0.44459918667483705,
+  "positive_rate_never_married": 0.04565640825866771
+ },
+ "features_used": [
+  "age",
+  "education-num",
+  "hours-per-week",
+  "capital-gain",
+  "capital-loss",
+  "workclass",
+  "marital-status",
+  "occupation",
+  "relationship"
+ ],
+ "prep_choice": [
+  {
+   "variant": "raw capital + native-country",
+   "f1": 0.6571,
+   "f1_std": 0.0057,
+   "roc_auc": 0.9052,
+   "n_features": 84
+  },
+  {
+   "variant": "log1p capital + native-country",
+   "f1": 0.6453,
+   "f1_std": 0.0059,
+   "roc_auc": 0.899,
+   "n_features": 84
+  },
+  {
+   "variant": "raw capital, no native-country",
+   "f1": 0.656,
+   "f1_std": 0.0061,
+   "roc_auc": 0.9051,
+   "n_features": 42
+  }
+ ],
+ "cv_default": [
+  {
+   "model": "Majority-class baseline",
+   "accuracy": 0.7607,
+   "accuracy_std": 0.0,
+   "precision": 0.0,
+   "precision_std": 0.0,
+   "recall": 0.0,
+   "recall_std": 0.0,
+   "f1": 0.0,
+   "f1_std": 0.0,
+   "roc_auc": 0.5,
+   "roc_auc_std": 0.0,
+   "fit_time_s": 0.0033
+  },
+  {
+   "model": "Logistic Regression",
+   "accuracy": 0.851,
+   "accuracy_std": 0.002,
+   "precision": 0.7331,
+   "precision_std": 0.0049,
+   "recall": 0.5935,
+   "recall_std": 0.0089,
+   "f1": 0.656,
+   "f1_std": 0.0061,
+   "roc_auc": 0.9051,
+   "roc_auc_std": 0.0009,
+   "fit_time_s": 0.1132
+  },
+  {
+   "model": "Random Forest",
+   "accuracy": 0.8469,
+   "accuracy_std": 0.0027,
+   "precision": 0.7061,
+   "precision_std": 0.0096,
+   "recall": 0.6172,
+   "recall_std": 0.0051,
+   "f1": 0.6586,
+   "f1_std": 0.004,
+   "roc_auc": 0.8925,
+   "roc_auc_std": 0.0018,
+   "fit_time_s": 16.3542
+  },
+  {
+   "model": "Gradient Boosting",
+   "accuracy": 0.8664,
+   "accuracy_std": 0.003,
+   "precision": 0.7867,
+   "precision_std": 0.0109,
+   "recall": 0.6061,
+   "recall_std": 0.0108,
+   "f1": 0.6846,
+   "f1_std": 0.0076,
+   "roc_auc": 0.9204,
+   "roc_auc_std": 0.0016,
+   "fit_time_s": 1.4979
+  }
+ ],
+ "cv_tuned": [
+  {
+   "model": "Logistic Regression",
+   "best_params": "{'C': 10}",
+   "accuracy": 0.8511,
+   "accuracy_std": 0.0021,
+   "precision": 0.7329,
+   "precision_std": 0.005,
+   "recall": 0.5943,
+   "recall_std": 0.0085,
+   "f1": 0.6563,
+   "f1_std": 0.0061,
+   "roc_auc": 0.9051,
+   "roc_auc_std": 0.001
+  },
+  {
+   "model": "Random Forest",
+   "best_params": "{'max_depth': 20, 'min_samples_leaf': 2}",
+   "accuracy": 0.8635,
+   "accuracy_std": 0.0026,
+   "precision": 0.7779,
+   "precision_std": 0.007,
+   "recall": 0.6012,
+   "recall_std": 0.0125,
+   "f1": 0.6781,
+   "f1_std": 0.0081,
+   "roc_auc": 0.9185,
+   "roc_auc_std": 0.0017
+  },
+  {
+   "model": "Gradient Boosting",
+   "best_params": "{'max_depth': 5, 'n_estimators': 150}",
+   "accuracy": 0.8728,
+   "accuracy_std": 0.0023,
+   "precision": 0.7793,
+   "precision_std": 0.0081,
+   "recall": 0.6532,
+   "recall_std": 0.0063,
+   "f1": 0.7107,
+   "f1_std": 0.0048,
+   "roc_auc": 0.9279,
+   "roc_auc_std": 0.0008
+  }
+ ],
+ "grid_edge_check": [
+  {
+   "model": "Logistic Regression",
+   "param": "C",
+   "best": 10,
+   "grid": [
+    0.01,
+    0.1,
+    1,
+    10
+   ],
+   "on_edge": true
+  },
+  {
+   "model": "Random Forest",
+   "param": "max_depth",
+   "best": 20,
+   "grid": [
+    12,
+    20
+   ],
+   "on_edge": true
+  },
+  {
+   "model": "Random Forest",
+   "param": "min_samples_leaf",
+   "best": 2,
+   "grid": [
+    2,
+    5
+   ],
+   "on_edge": true
+  },
+  {
+   "model": "Gradient Boosting",
+   "param": "n_estimators",
+   "best": 150,
+   "grid": [
+    150,
+    250
+   ],
+   "on_edge": true
+  },
+  {
+   "model": "Gradient Boosting",
+   "param": "max_depth",
+   "best": 5,
+   "grid": [
+    3,
+    4,
+    5
+   ],
+   "on_edge": true
+  }
+ ],
+ "gb_neighbour_settings": [
+  {
+   "setting": "depth 5, 150 trees (grid best)",
+   "f1": 0.7107
+  },
+  {
+   "setting": "depth 6, 150 trees",
+   "f1": 0.7108
+  },
+  {
+   "setting": "depth 5, 100 trees",
+   "f1": 0.7068
+  }
+ ],
+ "fs_lr": [
+  {
+   "index": 0,
+   "penalty": "L2 (baseline)",
+   "C": 1.0,
+   "f1": 0.6559,
+   "f1_std": 0.0063,
+   "roc_auc": 0.9051,
+   "non-zero coefficients": 42,
+   "original features kept": 9
+  },
+  {
+   "index": 1,
+   "penalty": "L1",
+   "C": 1.0,
+   "f1": 0.6562,
+   "f1_std": 0.0062,
+   "roc_auc": 0.9051,
+   "non-zero coefficients": 35,
+   "original features kept": 9
+  },
+  {
+   "index": 2,
+   "penalty": "L1",
+   "C": 0.1,
+   "f1": 0.6536,
+   "f1_std": 0.0066,
+   "roc_auc": 0.9048,
+   "non-zero coefficients": 30,
+   "original features kept": 9
+  },
+  {
+   "index": 3,
+   "penalty": "L1",
+   "C": 0.03,
+   "f1": 0.6485,
+   "f1_std": 0.0056,
+   "roc_auc": 0.9035,
+   "non-zero coefficients": 27,
+   "original features kept": 9
+  },
+  {
+   "index": 4,
+   "penalty": "L1",
+   "C": 0.01,
+   "f1": 0.6343,
+   "f1_std": 0.0069,
+   "roc_auc": 0.899,
+   "non-zero coefficients": 15,
+   "original features kept": 9
+  }
+ ],
+ "l1_top_coefficients": {
+  "cat__occupation_Prof-specialty": 0.51,
+  "cat__workclass_Federal-gov": 0.6,
+  "num__education-num": 0.75,
+  "cat__occupation_Exec-managerial": 0.75,
+  "cat__marital-status_Married-civ-spouse": 1.99,
+  "cap__capital-gain": 2.24
+ },
+ "fs_gb": [
+  {
+   "setup": "GB, all features",
+   "f1": 0.7107,
+   "f1_std": 0.0048,
+   "roc_auc": 0.9279,
+   "avg features": 42.0
+  },
+  {
+   "setup": "GB, L1-selected features",
+   "f1": 0.7102,
+   "f1_std": 0.0048,
+   "roc_auc": 0.9274,
+   "avg features": 30.8
+  }
+ ],
+ "threshold": 0.35,
+ "oof_f1_at_0.50": 0.7102206736353078,
+ "oof_f1_at_threshold": 0.7271634013128225,
+ "final_model_details": {
+  "gb_params": {
+   "max_depth": 5,
+   "n_estimators": 150
+  },
+  "selector_threshold": 1e-05,
+  "features_kept": 33,
+  "features_total": 42
+ },
+ "test": {
+  "model": "Gradient Boosting + L1 feature selection",
+  "threshold": 0.35,
+  "precision": 0.6924265842349304,
+  "recall": 0.7664670658682635,
+  "f1": 0.727568006496143,
+  "accuracy": 0.8626266762206981,
+  "roc_auc": 0.9298296250224045,
+  "avg_precision": 0.8309590922786312,
+  "tn": 6635,
+  "fp": 796,
+  "fn": 546,
+  "tp": 1792
+ },
+ "test_ci95": {
+  "precision": {
+   "estimate": 0.6924265842349304,
+   "lo": 0.6741137842233668,
+   "hi": 0.7093791115469275
+  },
+  "recall": {
+   "estimate": 0.7664670658682635,
+   "lo": 0.7490556524430815,
+   "hi": 0.7834806969911109
+  },
+  "f1": {
+   "estimate": 0.727568006496143,
+   "lo": 0.713539415405092,
+   "hi": 0.7410105242932723
+  },
+  "accuracy": {
+   "estimate": 0.8626266762206981,
+   "lo": 0.8561751458695874,
+   "hi": 0.8687711127034498
+  },
+  "roc_auc": {
+   "estimate": 0.9298296250224045,
+   "lo": 0.9247255074491847,
+   "hi": 0.9349173334422218
+  },
+  "avg_precision": {
+   "estimate": 0.8309590922786312,
+   "lo": 0.8174151691096947,
+   "hi": 0.844295009790447
+  }
+ },
+ "errors": {
+  "FP": {
+   "age": 45.0,
+   "education-num": 11.3,
+   "hours-per-week": 46.0,
+   "share capital-gain > 0": 0.019,
+   "share married-civ-spouse": 0.926
+  },
+  "FN": {
+   "age": 42.5,
+   "education-num": 10.0,
+   "hours-per-week": 42.4,
+   "share capital-gain > 0": 0.004,
+   "share married-civ-spouse": 0.683
+  },
+  "TP": {
+   "age": 45.0,
+   "education-num": 12.0,
+   "hours-per-week": 45.7,
+   "share capital-gain > 0": 0.29,
+   "share married-civ-spouse": 0.91
+  },
+  "all test": {
+   "age": 38.6,
+   "education-num": 10.1,
+   "hours-per-week": 40.2,
+   "share capital-gain > 0": 0.086,
+   "share married-civ-spouse": 0.453
+  }
+ },
+ "errors_occupation_top": {
+  "FP": {
+   "Exec-managerial": 0.197,
+   "Prof-specialty": 0.191,
+   "Craft-repair": 0.161,
+   "Sales": 0.156
+  },
+  "FN": {
+   "Craft-repair": 0.203,
+   "Prof-specialty": 0.122,
+   "Sales": 0.115,
+   "Machine-op-inspct": 0.105
+  }
+ },
+ "errors_mean_proba": {
+  "FP": 0.5417618305688746,
+  "FN": 0.1925333324762156
+ },
+ "perm_importance": {
+  "marital-status": 0.0669,
+  "capital-gain": 0.0508,
+  "education-num": 0.0332,
+  "age": 0.0328,
+  "capital-loss": 0.0181,
+  "occupation": 0.0178,
+  "relationship": 0.0142,
+  "hours-per-week": 0.0135,
+  "workclass": 0.0034
+ },
+ "fair_sex": [
+  {
+   "sex": "Male",
+   "n": 6480,
+   "actual >50K": 0.304,
+   "predicted >50K": 0.343,
+   "precision": 0.6992345790184602,
+   "recall": 0.7879249112125825,
+   "FPR": 0.14814814814814814,
+   "FNR": 0.21207508878741754
+  },
+  {
+   "sex": "Female",
+   "n": 3289,
+   "actual >50K": 0.112,
+   "predicted >50K": 0.112,
+   "precision": 0.6512261580381471,
+   "recall": 0.6512261580381471,
+   "FPR": 0.04380561259411362,
+   "FNR": 0.34877384196185285
+  }
+ ],
+ "fair_race": [
+  {
+   "race": "White",
+   "n": 8348,
+   "actual >50K": 0.254,
+   "predicted >50K": 0.28,
+   "precision": 0.7012820512820512,
+   "recall": 0.7744218971212836,
+   "FPR": 0.11221704928559961,
+   "FNR": 0.22557810287871638
+  },
+  {
+   "race": "Black",
+   "n": 944,
+   "actual >50K": 0.128,
+   "predicted >50K": 0.137,
+   "precision": 0.6124031007751938,
+   "recall": 0.6528925619834711,
+   "FPR": 0.060753341433778855,
+   "FNR": 0.34710743801652894
+  },
+  {
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "actual >50K": 0.257,
+   "predicted >50K": 0.296,
+   "precision": 0.6555555555555556,
+   "recall": 0.7564102564102564,
+   "FPR": 0.13716814159292035,
+   "FNR": 0.24358974358974358
+  },
+  {
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "actual >50K": 0.087,
+   "predicted >50K": 0.173,
+   "precision": 0.3333333333333333,
+   "recall": 0.6666666666666666,
+   "FPR": 0.12631578947368421,
+   "FNR": 0.3333333333333333
+  },
+  {
+   "race": "Other",
+   "n": 69,
+   "actual >50K": 0.159,
+   "predicted >50K": 0.159,
+   "precision": 0.6363636363636364,
+   "recall": 0.6363636363636364,
+   "FPR": 0.06896551724137931,
+   "FNR": 0.36363636363636365
+  }
+ ],
+ "fair_sex_ci95": [
+  {
+   "index": 0,
+   "sex": "Male",
+   "n": 6480,
+   "metric": "precision",
+   "estimate": 0.6992,
+   "lo": 0.6806,
+   "hi": 0.7176,
+   "small_group": false
+  },
+  {
+   "index": 1,
+   "sex": "Male",
+   "n": 6480,
+   "metric": "recall",
+   "estimate": 0.7879,
+   "lo": 0.7702,
+   "hi": 0.8053,
+   "small_group": false
+  },
+  {
+   "index": 2,
+   "sex": "Male",
+   "n": 6480,
+   "metric": "FPR",
+   "estimate": 0.1481,
+   "lo": 0.1383,
+   "hi": 0.1585,
+   "small_group": false
+  },
+  {
+   "index": 3,
+   "sex": "Male",
+   "n": 6480,
+   "metric": "FNR",
+   "estimate": 0.2121,
+   "lo": 0.1947,
+   "hi": 0.2298,
+   "small_group": false
+  },
+  {
+   "index": 4,
+   "sex": "Male",
+   "n": 6480,
+   "metric": "predicted >50K",
+   "estimate": 0.3427,
+   "lo": 0.3316,
+   "hi": 0.3546,
+   "small_group": false
+  },
+  {
+   "index": 5,
+   "sex": "Female",
+   "n": 3289,
+   "metric": "precision",
+   "estimate": 0.6512,
+   "lo": 0.6023,
+   "hi": 0.6981,
+   "small_group": false
+  },
+  {
+   "index": 6,
+   "sex": "Female",
+   "n": 3289,
+   "metric": "recall",
+   "estimate": 0.6512,
+   "lo": 0.597,
+   "hi": 0.7012,
+   "small_group": false
+  },
+  {
+   "index": 7,
+   "sex": "Female",
+   "n": 3289,
+   "metric": "FPR",
+   "estimate": 0.0438,
+   "lo": 0.0372,
+   "hi": 0.0505,
+   "small_group": false
+  },
+  {
+   "index": 8,
+   "sex": "Female",
+   "n": 3289,
+   "metric": "FNR",
+   "estimate": 0.3488,
+   "lo": 0.2988,
+   "hi": 0.403,
+   "small_group": false
+  },
+  {
+   "index": 9,
+   "sex": "Female",
+   "n": 3289,
+   "metric": "predicted >50K",
+   "estimate": 0.1116,
+   "lo": 0.1006,
+   "hi": 0.1222,
+   "small_group": false
+  }
+ ],
+ "fair_race_ci95": [
+  {
+   "index": 0,
+   "race": "White",
+   "n": 8348,
+   "metric": "precision",
+   "estimate": 0.7013,
+   "lo": 0.6829,
+   "hi": 0.7193,
+   "small_group": false
+  },
+  {
+   "index": 1,
+   "race": "White",
+   "n": 8348,
+   "metric": "recall",
+   "estimate": 0.7744,
+   "lo": 0.7556,
+   "hi": 0.7921,
+   "small_group": false
+  },
+  {
+   "index": 2,
+   "race": "White",
+   "n": 8348,
+   "metric": "FPR",
+   "estimate": 0.1122,
+   "lo": 0.1044,
+   "hi": 0.1202,
+   "small_group": false
+  },
+  {
+   "index": 3,
+   "race": "White",
+   "n": 8348,
+   "metric": "FNR",
+   "estimate": 0.2256,
+   "lo": 0.2079,
+   "hi": 0.2444,
+   "small_group": false
+  },
+  {
+   "index": 4,
+   "race": "White",
+   "n": 8348,
+   "metric": "predicted >50K",
+   "estimate": 0.2803,
+   "lo": 0.2706,
+   "hi": 0.2901,
+   "small_group": false
+  },
+  {
+   "index": 5,
+   "race": "Other",
+   "n": 69,
+   "metric": "precision",
+   "estimate": 0.6364,
+   "lo": 0.3333,
+   "hi": 0.9304,
+   "small_group": true
+  },
+  {
+   "index": 6,
+   "race": "Other",
+   "n": 69,
+   "metric": "recall",
+   "estimate": 0.6364,
+   "lo": 0.3333,
+   "hi": 0.9,
+   "small_group": true
+  },
+  {
+   "index": 7,
+   "race": "Other",
+   "n": 69,
+   "metric": "FPR",
+   "estimate": 0.069,
+   "lo": 0.0148,
+   "hi": 0.1385,
+   "small_group": true
+  },
+  {
+   "index": 8,
+   "race": "Other",
+   "n": 69,
+   "metric": "FNR",
+   "estimate": 0.3636,
+   "lo": 0.1,
+   "hi": 0.6667,
+   "small_group": true
+  },
+  {
+   "index": 9,
+   "race": "Other",
+   "n": 69,
+   "metric": "predicted >50K",
+   "estimate": 0.1594,
+   "lo": 0.0725,
+   "hi": 0.2464,
+   "small_group": true
+  },
+  {
+   "index": 10,
+   "race": "Black",
+   "n": 944,
+   "metric": "precision",
+   "estimate": 0.6124,
+   "lo": 0.5278,
+   "hi": 0.6942,
+   "small_group": false
+  },
+  {
+   "index": 11,
+   "race": "Black",
+   "n": 944,
+   "metric": "recall",
+   "estimate": 0.6529,
+   "lo": 0.5714,
+   "hi": 0.7408,
+   "small_group": false
+  },
+  {
+   "index": 12,
+   "race": "Black",
+   "n": 944,
+   "metric": "FPR",
+   "estimate": 0.0608,
+   "lo": 0.0448,
+   "hi": 0.0772,
+   "small_group": false
+  },
+  {
+   "index": 13,
+   "race": "Black",
+   "n": 944,
+   "metric": "FNR",
+   "estimate": 0.3471,
+   "lo": 0.2592,
+   "hi": 0.4286,
+   "small_group": false
+  },
+  {
+   "index": 14,
+   "race": "Black",
+   "n": 944,
+   "metric": "predicted >50K",
+   "estimate": 0.1367,
+   "lo": 0.1144,
+   "hi": 0.1578,
+   "small_group": false
+  },
+  {
+   "index": 15,
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "metric": "precision",
+   "estimate": 0.6556,
+   "lo": 0.5604,
+   "hi": 0.7531,
+   "small_group": false
+  },
+  {
+   "index": 16,
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "metric": "recall",
+   "estimate": 0.7564,
+   "lo": 0.6617,
+   "hi": 0.8429,
+   "small_group": false
+  },
+  {
+   "index": 17,
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "metric": "FPR",
+   "estimate": 0.1372,
+   "lo": 0.0935,
+   "hi": 0.1864,
+   "small_group": false
+  },
+  {
+   "index": 18,
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "metric": "FNR",
+   "estimate": 0.2436,
+   "lo": 0.1571,
+   "hi": 0.3383,
+   "small_group": false
+  },
+  {
+   "index": 19,
+   "race": "Asian-Pac-Islander",
+   "n": 304,
+   "metric": "predicted >50K",
+   "estimate": 0.2961,
+   "lo": 0.25,
+   "hi": 0.352,
+   "small_group": false
+  },
+  {
+   "index": 20,
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "metric": "precision",
+   "estimate": 0.3333,
+   "lo": 0.1176,
+   "hi": 0.5714,
+   "small_group": true
+  },
+  {
+   "index": 21,
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "metric": "recall",
+   "estimate": 0.6667,
+   "lo": 0.3333,
+   "hi": 1.0,
+   "small_group": true
+  },
+  {
+   "index": 22,
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "metric": "FPR",
+   "estimate": 0.1263,
+   "lo": 0.0625,
+   "hi": 0.1895,
+   "small_group": true
+  },
+  {
+   "index": 23,
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "metric": "FNR",
+   "estimate": 0.3333,
+   "lo": 0.0,
+   "hi": 0.6667,
+   "small_group": true
+  },
+  {
+   "index": 24,
+   "race": "Amer-Indian-Eskimo",
+   "n": 104,
+   "metric": "predicted >50K",
+   "estimate": 0.1731,
+   "lo": 0.1058,
+   "hi": 0.2404,
+   "small_group": true
+  }
+ ],
+ "sex_gaps_male_minus_female_ci95": {
+  "recall gap": {
+   "estimate": 0.13669875317443536,
+   "lo": 0.08588546110518877,
+   "hi": 0.19069164891861892
+  },
+  "FPR gap": {
+   "estimate": 0.10434253555403453,
+   "lo": 0.09165931631700451,
+   "hi": 0.11688327837443233
+  },
+  "predicted >50K gap": {
+   "estimate": 0.23116284547443966,
+   "lo": 0.2150072433269897,
+   "hi": 0.2473653362874377
+  },
+  "FPR ratio": {
+   "estimate": 3.381944444444444,
+   "lo": 2.843207418845602,
+   "hi": 4.085981580462361
+  },
+  "groups": {
+   "a": "Male",
+   "b": "Female",
+   "n_a": 6480,
+   "n_b": 3289
+  }
+ },
+ "race_gaps_white_minus_black_ci95": {
+  "recall gap": {
+   "estimate": 0.1215293351378125,
+   "lo": 0.03817045132962685,
+   "hi": 0.21013834729767764
+  },
+  "FPR gap": {
+   "estimate": 0.05146370785182076,
+   "lo": 0.03396416550592249,
+   "hi": 0.06942333110533196
+  },
+  "predicted >50K gap": {
+   "estimate": 0.14365411790502955,
+   "lo": 0.11988266752211023,
+   "hi": 0.16707488041386137
+  },
+  "FPR ratio": {
+   "estimate": 1.8470926312409697,
+   "lo": 1.4407731816570046,
+   "hi": 2.524184892773519
+  },
+  "groups": {
+   "a": "White",
+   "b": "Black",
+   "n_a": 8348,
+   "n_b": 944
+  }
+ },
+ "ablation_sex_proxy": [
+  {
+   "variant": "A: current (marital-status + relationship)",
+   "OOF F1": 0.727,
+   "ROC AUC": 0.927,
+   "Male predicted >50K": 0.351,
+   "Male recall": 0.789,
+   "Male FPR": 0.16,
+   "Female predicted >50K": 0.111,
+   "Female recall": 0.704,
+   "Female FPR": 0.039
+  },
+  {
+   "variant": "B: without relationship",
+   "OOF F1": 0.725,
+   "ROC AUC": 0.927,
+   "Male predicted >50K": 0.356,
+   "Male recall": 0.795,
+   "Male FPR": 0.165,
+   "Female predicted >50K": 0.1,
+   "Female recall": 0.654,
+   "Female FPR": 0.033
+  },
+  {
+   "variant": "C: without relationship and marital-status",
+   "OOF F1": 0.659,
+   "ROC AUC": 0.888,
+   "Male predicted >50K": 0.299,
+   "Male recall": 0.689,
+   "Male FPR": 0.128,
+   "Female predicted >50K": 0.153,
+   "Female recall": 0.594,
+   "Female FPR": 0.1
+  }
+ ],
+ "relationship_by_sex_train": {
+  "Female": {
+   "Husband": 1,
+   "Not-in-family": 4698,
+   "Other-relative": 558,
+   "Own-child": 2671,
+   "Unmarried": 3126,
+   "Wife": 1849
+  },
+  "Male": {
+   "Husband": 15821,
+   "Not-in-family": 5363,
+   "Other-relative": 660,
+   "Own-child": 3362,
+   "Unmarried": 961,
+   "Wife": 3
+  }
+ },
+ "test_f1_excluding_overlap_rows": 0.7276051188299817,
+ "selection_stability": {
+  "n_resamples": 35,
+  "always_selected": 23,
+  "never_selected": 3,
+  "sometimes_selected": 16,
+  "sometimes_selected_features": [
+   {
+    "feature": "cat__occupation_Tech-support",
+    "selection_frequency": 0.971
+   },
+   {
+    "feature": "cat__workclass_Self-emp-inc",
+    "selection_frequency": 0.971
+   },
+   {
+    "feature": "cat__workclass_Local-gov",
+    "selection_frequency": 0.943
+   },
+   {
+    "feature": "cat__occupation_Adm-clerical",
+    "selection_frequency": 0.8
+   },
+   {
+    "feature": "cat__marital-status_Divorced",
+    "selection_frequency": 0.714
+   },
+   {
+    "feature": "cat__marital-status_Widowed",
+    "selection_frequency": 0.686
+   },
+   {
+    "feature": "cat__occupation_Priv-house-serv",
+    "selection_frequency": 0.6
+   },
+   {
+    "feature": "cat__marital-status_Separated",
+    "selection_frequency": 0.6
+   },
+   {
+    "feature": "cat__occupation_Craft-repair",
+    "selection_frequency": 0.486
+   },
+   {
+    "feature": "cat__occupation_Transport-moving",
+    "selection_frequency": 0.486
+   },
+   {
+    "feature": "cat__relationship_Not-in-family",
+    "selection_frequency": 0.457
+   },
+   {
+    "feature": "cat__relationship_Husband",
+    "selection_frequency": 0.343
+   },
+   {
+    "feature": "cat__workclass_Unknown",
+    "selection_frequency": 0.314
+   },
+   {
+    "feature": "cat__marital-status_Married-spouse-absent",
+    "selection_frequency": 0.143
+   },
+   {
+    "feature": "cat__workclass_Private",
+    "selection_frequency": 0.114
+   },
+   {
+    "feature": "cat__marital-status_Married-AF-spouse",
+    "selection_frequency": 0.029
+   }
+  ]
+ },
+ "selector_scaling_sensitivity": [
+  {
+   "setup": "L1 selector on raw inputs (as in the final model)",
+   "f1_at_0.5": 0.7102083347859758,
+   "roc_auc": 0.9273718022750055,
+   "avg_features": 30.8,
+   "oof_best_threshold": 0.35,
+   "oof_f1_at_best_threshold": 0.7271634013128225
+  },
+  {
+   "setup": "L1 selector on standardised inputs",
+   "f1_at_0.5": 0.7110286807977568,
+   "roc_auc": 0.9274886049339484,
+   "avg_features": 29.2,
+   "oof_best_threshold": 0.34,
+   "oof_f1_at_best_threshold": 0.727227844976549
+  }
+ ],
+ "histgb_benchmark_cv": {
+  "f1_at_0.5": 0.7100633573794639,
+  "roc_auc": 0.9277296707906746,
+  "oof_best_threshold": 0.36,
+  "oof_f1_at_best_threshold": 0.7277
+ },
+ "official_split_check": {
+  "threshold": 0.4,
+  "precision": 0.7125382262996942,
+  "recall": 0.7269890795631825,
+  "f1": 0.7196911196911197,
+  "accuracy": 0.8662244333886125,
+  "roc_auc": 0.9276376418948997,
+  "avg_precision": 0.8265434871040506,
+  "tn": 11307,
+  "fp": 1128,
+  "fn": 1050,
+  "tp": 2796
+ },
+ "seed_sensitivity": [
+  {
+   "split_seed": 0,
+   "threshold": 0.38,
+   "precision": 0.7077045274027005,
+   "recall": 0.7621899059024807,
+   "f1": 0.7339373970345964,
+   "roc_auc": 0.9291923391235869
+  },
+  {
+   "split_seed": 1,
+   "threshold": 0.37,
+   "precision": 0.7139983909895414,
+   "recall": 0.7591958939264328,
+   "f1": 0.7359038142620232,
+   "roc_auc": 0.9317298559349378
+  },
+  {
+   "split_seed": 2,
+   "threshold": 0.39,
+   "precision": 0.7333053338933221,
+   "recall": 0.7467921300256629,
+   "f1": 0.7399872854418309,
+   "roc_auc": 0.9328735976343063
+  },
+  {
+   "split_seed": 3,
+   "threshold": 0.35,
+   "precision": 0.6774311926605504,
+   "recall": 0.7895637296834902,
+   "f1": 0.7292119296859569,
+   "roc_auc": 0.9275906057427794
+  },
+  {
+   "split_seed": 4,
+   "threshold": 0.39,
+   "precision": 0.7159663865546219,
+   "recall": 0.7288280581693756,
+   "f1": 0.7223399745654938,
+   "roc_auc": 0.9259731301570112
+  }
+ ],
+ "seed_sensitivity_summary": {
+  "precision": {
+   "mean": 0.7096811663001473,
+   "std": 0.02037284723732777
+  },
+  "recall": {
+   "mean": 0.7573139435414885,
+   "std": 0.022302016038337303
+  },
+  "f1": {
+   "mean": 0.7322760801979802,
+   "std": 0.006773077732539564
+  },
+  "roc_auc": {
+   "mean": 0.9294719057185243,
+   "std": 0.0028516979406698483
+  }
+ },
+ "environment": {
+  "python": "3.14.7",
+  "scikit-learn": "1.9.1",
+  "pandas": "3.1.0",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2"
+ },
+ "runtime_s": 776
+}

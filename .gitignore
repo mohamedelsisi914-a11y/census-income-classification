@@ -1,0 +1,29 @@
+# Data: never commit the raw dataset (download it from UCI, see data/README.md)
+data/raw/*
+!data/raw/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Scratch output (the committed results/ and reports/figures/ are produced by scripts/run_pipeline.py)
+results/results_fast_smoke_test.json
+*.log
